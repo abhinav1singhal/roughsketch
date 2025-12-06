@@ -41,7 +41,7 @@ function App() {
     return (
         <div className="container">
             <header>
-                <h1>Mermaid to Rough.js</h1>
+                <h1>RoughSketch</h1>
             </header>
             <main className="main-content">
                 <Editor value={code} onChange={setCode} />

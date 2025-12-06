@@ -1,4 +1,4 @@
-# Mermaid to Rough.js Converter
+# RoughSketch
 
 A web application that converts standard Mermaid.js sequence diagrams into "hand-drawn" sketch-style diagrams using Rough.js.
 

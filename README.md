@@ -1,41 +1,92 @@
-# RoughSketch
+# RoughSketch ✏️
 
-A web application that converts standard Mermaid.js sequence diagrams into "hand-drawn" sketch-style diagrams using Rough.js.
+Transform your Mermaid.js sequence diagrams into beautiful hand-drawn sketches. Perfect for presentations, documentation, and making technical diagrams feel more approachable.
 
-## 🏗 Architecture Approach
+![GitHub](https://img.shields.io/github/license/abhinav1singhal/roughsketch)
+![GitHub stars](https://img.shields.io/github/stars/abhinav1singhal/roughsketch)
 
-We utilize a **Post-Processing** strategy to achieve the hand-drawn look while maintaining the robust layout capabilities of Mermaid.js.
+## 📸 Preview
 
-### Core Workflow
+![RoughSketch Example](roughsketchsample.png)
 
-```mermaid
-graph TD
-    A[User Input] -->|Mermaid Code| B[Mermaid Engine]
-    B -->|Standard SVG| C[SVG Parser]
-    C -->|DOM Nodes| D[Shape Mapper]
-    D -->|Rough.js Primitives| E[Rough.js Renderer]
-    E -->|Hand-drawn Diagram| F[Display]
+## ✨ Features
+
+- 🎨 **Live Editor** - Split-pane interface with real-time preview
+- ✏️ **Hand-Drawn Style** - Converts formal diagrams into sketch-style visuals
+- ⚡ **Fast & Responsive** - Built with React and Vite
+- 🔄 **Sequence Diagram Support** - Full support for Mermaid sequence diagrams
+- 🎯 **Zero Config** - Just paste your Mermaid code and go
+
+## 🚀 Quick Start
+
+### Local Development
+
+```bash
+# Clone the repository
+git clone https://github.com/abhinav1singhal/roughsketch.git
+cd roughsketch
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
 ```
 
-1.  **Layout Generation**: We use the native `mermaid.render()` function to generate a strict SVG diagram. This handles all the complex logic of positioning actors, lifelines, and messages.
-2.  **Parsing**: The resulting SVG string is parsed into a DOM tree.
-3.  **Translation (Style Transfer)**:
-    *   We traverse the SVG DOM.
-    *   **Rectangles** (Activations, Notes) are mapped to `rough.rectangle`.
-    *   **Lines/Paths** (Messages, Lifelines) are mapped to `rough.path` or `rough.line`.
-    *   **Text** is preserved but styled with handwritten fonts (e.g., 'Indie Flower' or 'Patrick Hand').
-4.  **Rendering**: The new Rough.js primitives are drawn onto a target Canvas or SVG container.
+Visit `http://localhost:5173` to see the app in action!
 
-### Technology Stack
+### Production Build
 
-*   **Frontend Framework**: React (Vite)
-*   **Diagram Engine**: `mermaid`
-*   **Sketching Library**: `roughjs`
-*   **Styling**: Vanilla CSS
+```bash
+npm run build
+npm run preview
+```
 
-## Features (Planned)
+## 🎯 How It Works
 
-*   [x] Architecture Design
-*   [x] Live Editor (Split pane: Code / Sketch)
-*   [x] Support for Sequence Diagrams
-*   [ ] Export to PNG/SVG
+RoughSketch uses a **post-processing** approach:
+
+1. **Mermaid.js** generates the diagram layout and SVG structure
+2. **SVG Parser** extracts geometric shapes and paths
+3. **Rough.js** redraws each element with a hand-drawn aesthetic
+4. **Custom Fonts** apply handwritten typography for authenticity
+
+## 🛠 Technology Stack
+
+- **React** - UI framework
+- **Vite** - Build tool and dev server
+- **Mermaid.js** - Diagram parsing and layout
+- **Rough.js** - Hand-drawn rendering
+- **Docker** - Containerization for deployment
+
+## 📦 Deployment
+
+Deploy to Google Cloud Run with a single command:
+
+```bash
+gcloud run deploy roughsketch \
+    --source . \
+    --platform managed \
+    --region us-central1 \
+    --allow-unauthenticated
+```
+
+See [DEPLOY.md](DEPLOY.md) for detailed deployment instructions.
+
+## 🤝 Contributing
+
+Contributions are welcome! Feel free to open issues or submit pull requests.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [Mermaid.js](https://mermaid.js.org/) - For the amazing diagram engine
+- [Rough.js](https://roughjs.com/) - For the hand-drawn graphics library
+- [Indie Flower](https://fonts.google.com/specimen/Indie+Flower) - For the handwritten font
+
+---
+
+**Made with ❤️ by [Abhinav Singhal](https://github.com/abhinav1singhal)**
